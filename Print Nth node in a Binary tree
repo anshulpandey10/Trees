@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+node* left;
+node* right;
+int data;
+};
+struct node* newnode()
+{
+node* element=new node();
+int data1;
+// cout<<"enter the data"<<endl;
+cin>>data1;
+element->data=data1;
+if(data1==0)
+return 0;
+// cout<<"enter the left child of "<<data1<<endl;
+element->left=newnode();
+//cout<<"enter the right child of "<<data1<<endl;
+element->right=newnode();
+
+return element;
+}
+
+void print(struct node* root,vector<int>&a)
+{
+if(root==0)
+return;
+
+
+print(root->left,a);
+a.push_back(root->data);
+
+//cout<<root->data<<" ";
+print(root->right,a);
+//return;
+}
+
+int main()
+{
+struct node* root=0;
+root=newnode();
+vector<int>a;
+print(root,a);
+int n;
+cin>>n;
+
+cout<<a[n-1];
+}
