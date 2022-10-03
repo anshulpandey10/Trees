@@ -1,0 +1,43 @@
+#include<iostream>
+#include<list>
+using namespace std;
+
+class graph{
+	int v;
+	list<int>*l;
+	public:
+		graph(int v)
+		{
+			this->v=v;
+		     l=new list<int>[v];     
+		}
+		
+		void edge(int x,int y){
+			l[x].push_back(y);
+			l[y].push_back(x);
+		}
+	    void please(){
+	    	for(int i=0;i<v;i++)
+	    	{
+	    		cout<<"node "<<i<<" -> ";
+	    		int size1=l[i].size();
+	    		for(int j=0;j<size1;j++)
+	    		{
+	    			cout<<l[j]<<" , ";				}
+			      cout<<endl;
+			}
+		}
+};
+
+int main()
+{
+	graph g(4);
+	g.edge(0,1);
+	g.edge(0,3);
+    	g.edge(1,4);
+	g.edge(1,3);
+		g.edge(2,1);
+	g.edge(2,4);
+		g.edge(3,3);
+	g.edge(3,2);	
+}
